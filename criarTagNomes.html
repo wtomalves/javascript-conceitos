@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang=pt-br  >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Tags de Nomes</title>
+</head>
+<body>
+  <ul id="nome">
+
+  </ul>
+  <script>
+
+    function listaNomes(nome, cor) {
+      var lista = document.createElement('li');
+      var nome = document.createTextNode(nome);
+
+      lista.appendChild(nome);
+
+      lista.style.width = '80px';
+      lista.style.height = '50px';
+      lista.style.backgroundColor = cor;
+
+
+      var cadastro = document.querySelector('#nome');
+      cadastro.appendChild(lista);
+    }
+
+    listaNomes('Bebechinho', 'pink');
+    listaNomes('Cachorrinho', 'lightblue');
+    listaNomes('Tempestade', 'lightgrey');
+    listaNomes('Mozart', 'lightgreen');
+    listaNomes('Papaizinho', 'yellow');
+
+
+
+
+
+
+    console.log(nome);
+
+  </script>
+</body>
+</html>

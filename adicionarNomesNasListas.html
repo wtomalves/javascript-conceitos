@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=pt-br  >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionando Nomes</title>
+</head>
+<body>
+  <div id="cadastro">
+    <input type="text" name="nome">
+    <button onclick="Adicionar()">Adicionar</button>
+    <ul id="nome">
+
+    </ul>
+  </div>
+
+  <script>
+
+    function Adicionar() {
+
+
+      var listagem = document.createElement('li');
+      var pularLinha = document.createElement('br');
+      var nome = document.querySelector('input');
+      
+      if (nome.value == '' || isNaN(nome.value) == false) {
+        return;
+      } else {
+
+        var nomeDigitado = document.createTextNode(nome.value);
+        var cadastro = document.querySelector('#nome');
+
+        listagem.appendChild(nomeDigitado);
+        listagem.style.width = '100px';
+        listagem.style.height = '50px';
+        listagem.style.backgroundColor = 'yellow';
+
+        cadastro.appendChild(listagem);
+        cadastro.appendChild(pularLinha);
+      }
+
+      nome.value = '';
+      nome.focus();
+
+    }
+
+
+  </script>
+</body>
+</html>

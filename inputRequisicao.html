@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input para Requisição</title>
+</head>
+<body>
+  <div class="botao">
+    <input class="usuario" type="text" name="user">
+    <button onclick="Adicionar()">Adicionar</button>
+  </div>
+  <main>
+
+  </main>
+  <script>
+
+    function Adicionar() {
+      var existeUmElemento = document.querySelector('#atividade');
+      if (existeUmElemento != null) {
+        existeUmElemento.remove();
+      }
+
+      var conteudoUl = document.querySelector('main');
+      var atividadeUl = document.createElement('ul');
+      atividadeUl.id = 'atividade';
+      conteudoUl.appendChild(atividadeUl);
+      var LiTemporario = document.createElement('li');
+      LiTemporario.textContent = 'Carregando...';
+      atividadeUl.appendChild(LiTemporario);
+      var atividades = [];
+      var nome = document.querySelector('.usuario');
+      var users = nome.value;
+      var dados = function() {
+
+        return new Promise (function(resolve, reject){
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'https://api.github.com/users/'+users+'/repos')
+          xhr.send(null);
+
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                resolve(JSON.parse(xhr.responseText));
+              } else {
+                reject('Não encontramos o usuário na platarforma do Github');
+              }
+            }
+          }
+        })
+      }
+
+      dados()
+      .then(function(response) {
+        atividades = response;
+        atividades.forEach(function(repositorio) {
+          var atividadeLi = document.createElement('li');
+          atividadeLi.textContent = repositorio.name;
+          atividadeUl.appendChild(atividadeLi);
+
+        });
+
+        LiTemporario.remove();
+      })
+      .catch(function(error){
+        alert(error);
+
+        LiTemporario.remove();
+      });
+
+      nome.value = '';
+      nome.focus();
+
+    }
+
+  </script>
+
+
+</body>
+</html>

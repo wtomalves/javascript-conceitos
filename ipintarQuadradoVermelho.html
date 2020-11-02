@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html lang="pr-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso JavaScript</title>
+  </head>
+  <body>
+    <div id="app">
+      <button onclick="quadradoVermelho()">Clique Aqui</button>
+    </div>
+    <script>
+
+        function quadradoVermelho() {
+
+          var element = document.createElement('div');
+          var boxElement = document.querySelector('#app');
+          var pulaLinha = document.createElement('br');
+
+          element.style.width = '100px';
+          element.style.height = '100px';
+          element.style.backgroundColor = 'red';
+          element.onmousemove = function() {
+            element.style.backgroundColor = getRandomColor();
+          };
+
+          boxElement.appendChild(element);
+          boxElement.appendChild(pulaLinha);
+
+        }
+
+        
+
+
+
+
+    </script>
+  </body>
+</html>

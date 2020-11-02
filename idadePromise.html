@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idade Promise</title>
+</head>
+<body>
+  <script>
+
+    function checaIdade(idade) {
+      return new Promise(function(resolve, reject) {
+
+        setTimeout(function() {
+          if (idade >= 18) {
+          resolve();
+        } else {
+          reject();
+        };
+      }, 5000);
+
+
+      });
+    }
+
+
+
+
+    checaIdade(18)
+    .then(function() {
+      console.log("Maior que 18");
+    })
+    .catch(function() {
+      console.log("Menor que 18");
+    });
+
+    console.log('kakaka')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+</html>
